@@ -9,31 +9,23 @@ function love.load()
 end
 
 function love.update(dt)
-  x, y = love.mouse.getPosition()
-  
   if gameState == 0 then
-    if (x >= 100 and x <= 200) and (y >= 500 and y <= 530) then
-      if love.mouse.isDown(1) then
+    local x, y = love.mouse.getPosition()
+
+    if love.mouse.isDown(1) then
+      if (x >= 100 and x <= 200) and (y >= 500 and y <= 530) then
         gameState = 1
-      end	
-    end
-  
-    if (x >= 250 and x <= 350) and (y >= 500 and y <= 530) then
-      if love.mouse.isDown(1) then
+      elseif (x >= 250 and x <= 350) and (y >= 500 and y <= 530) then
         gameState = 2
-      end	
-    end
-    
-    if (x >= 400 and x <= 500) and (y >= 500 and y <= 530) then
-      if love.mouse.isDown(1) then
+      elseif (x >= 400 and x <= 500) and (y >= 500 and y <= 530) then
         love.event.quit()
-      end	
+      end
     end
   end
 
   if gameState == 1 then
-    selectedX = math.floor(love.mouse.getX() / 50) + 1
-    selectedY = math.floor(love.mouse.getY() / 50) + 1
+    local selectedX = math.floor(love.mouse.getX() / 50) + 1
+    local selectedY = math.floor(love.mouse.getY() / 50) + 1
     
     if love.mouse.isDown(1) then
       for key = 0, #gridArea do
@@ -55,7 +47,6 @@ end
 
 function love.draw()
   if gameState == 0 then
-    love.graphics.print(startMenu)
     startButton()
     optionButton()
     exitButton()
@@ -77,9 +68,6 @@ function love.draw()
       selectedGrid.draw()
     end
     
-
-    love.graphics.setColor(255, 255, 255)
-    love.graphics.print('selected x: '..selectedX..' selected y: '..selectedY)
   elseif gameState == 2 then
     love.graphics.print("Options Screen")
   end

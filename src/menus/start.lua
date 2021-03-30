@@ -1,5 +1,3 @@
-startMenu = "Start Screen"
-
 function startButton()
   love.graphics.rectangle('fill', 100, 500, 100, 30)
   love.graphics.print({{0, 0, 0}, 'Start'}, 130, 509)
