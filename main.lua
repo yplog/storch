@@ -27,6 +27,18 @@ function love.update(dt)
       end	
     end
   end
+
+  if gameState == 1 then
+    selectedX = math.floor(love.mouse.getX() / 50) + 1
+    selectedY = math.floor(love.mouse.getY() / 50) + 1
+
+    -- mouse
+    
+    if love.mouse.isDown(1) then
+      clicked = 1
+    end
+    
+  end
   
   if love.keyboard.isDown("escape") then
     gameState = 0
@@ -40,7 +52,7 @@ function love.draw()
     optionButton()
     exitButton()
   elseif gameState == 1 then
-    love.graphics.print("Game Screen")
+    --love.graphics.print("Game Screen")
     local y = 0
     for y = 0, 550 do 
       if 0 == (y % 50) then
@@ -53,6 +65,9 @@ function love.draw()
         end
       end
     end
+
+    love.graphics.setColor(255, 255, 255)
+    love.graphics.print('selected x: '..selectedX..' selected y: '..selectedY)
   elseif gameState == 2 then
     love.graphics.print("Options Screen")
   end
