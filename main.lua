@@ -1,4 +1,5 @@
 require('src.menus.start')
+require('src.grid')
 
 function love.load()
   gameState = 0
@@ -45,7 +46,9 @@ function love.draw()
       if 0 == (y % 50) then
         for x = 0, 750 do
           if 0 == (x % 50) then
-            love.graphics.rectangle('line', x, y, 50, 50)
+            -- love.graphics.rectangle('line', x, y, 50, 50)
+            g = Grid.new('line', x, y)
+            g.draw()
           end
         end
       end
